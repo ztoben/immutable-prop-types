@@ -1,7 +1,7 @@
 {
   "name": "immutable-prop-types",
   "version": "0.0.1",
-  "description": "PropType validators that work with Immutable.js.",
+  "description": "PropType validators that work with Immutable.js",
   "main": "dist/ImmutablePropTypes.js",
   "scripts": {
     "build": "./scripts/build",
@@ -21,7 +21,7 @@
     "immutablejs",
     "proptype"
   ],
-  "author": "James Burnett <HurricaneJamesEsq@gmail.com> (https://github.com/HurricaneJames/react-immutable-proptypes)",
+  "author": "Zach Toben <zach.toben@gmail.com> (https://github.com/ztoben/immutable-prop-types)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ztoben/immutable-prop-types/issues"
@@ -31,18 +31,18 @@
     "immutable": ">=3.6.2"
   },
   "devDependencies": {
-    "babel": "^4.6.6",
-    "babel-eslint": "^3.1.1",
-    "eslint": "^0.21.0",
-    "eslint-plugin-react": "^2.2.0",
+    "babel-cli": "6.26.0",
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.9.1",
     "expect.js": "^0.3.1",
-    "immutable": "^3.7.4",
-    "istanbul": "~0.3.7",
-    "mocha": "^2.3.3",
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0"
+    "immutable": "^3.8.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
   },
   "dependencies": {
-    "invariant": "^2.2.2"
+    "invariant": "^2.2.4"
   }
 }
