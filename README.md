@@ -1,6 +1,7 @@
 # immutable-prop-types
 
-[![npm package](https://img.shields.io/npm/v/react-immutable-proptypes.svg?style=flat)](https://www.npmjs.org/package/immutable-prop-types)
+[![npm package](https://img.shields.io/npm/v/immutable-prop-types.svg?style=flat)](https://www.npmjs.org/package/immutable-prop-types)
+[![Build Status](https://travis-ci.org/ztoben/immutable-prop-types.svg?branch=master)](https://travis-ci.org/ztoben/immutable-prop-types)
 
 PropType validators that work with Immutable.js. Forked from [react-immutable-proptypes](https://github.com/HurricaneJames/react-immutable-proptypes).
 
