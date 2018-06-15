@@ -7,8 +7,6 @@ PropType validators that work with Immutable.js. Forked from [react-immutable-pr
 
 ## About
 
-I got tired of seeing `React.PropTypes.instanceOf(Immutable.List)` or `React.PropTypes.instanceOf(Immutable.Map)` as PropTypes for components that should be specifying an `Immutable.List` **_of_** something or that an `Immutable.Map` **contains** some keys. A little *"googling"* came up empty, unless you want to use Flow, which I do not. So, I wrote `react-immutable-proptypes`.
-
 Usage is simple, they work with and like any `React.PropType.*` validator.
 
 ```js
@@ -132,7 +130,3 @@ aMap: ImmutablePropTypes.mapContains({
 ```
 
 These two validators cover the output of `Immutable.fromJS` on standard JSON data sources.
-
-## RFC
-
-Please send a message or, better yet, create an issue/pull request if you know a better solution, find bugs, or want a feature. For example, should `listOf` work with `Immutable.Seq` or `Immutable.Range`. I can think of reasons it should, but it is not a use case I have at the present, so I'm less than inclined to implement it. Alternatively, we could add a validator for sequences and/or ranges.

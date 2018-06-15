@@ -135,7 +135,6 @@ function createIterableSubclassTypeChecker(subclassName, validator) {
 }
 
 function createIterableTypeChecker(typeChecker, immutableClassName, immutableClassTypeValidator) {
-
   function validate(props, propName, componentName, location, propFullName, ...rest) {
     var propValue = props[propName];
     if (!immutableClassTypeValidator(propValue)) {
@@ -166,7 +165,6 @@ function createIterableTypeChecker(typeChecker, immutableClassName, immutableCla
 }
 
 function createKeysTypeChecker(typeChecker) {
-
   function validate(props, propName, componentName, location, propFullName, ...rest) {
     var propValue = props[propName];
     if (typeof typeChecker !== 'function') {
