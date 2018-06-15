@@ -5,6 +5,7 @@
  *     ImmutableTypes.shape  is based on React.PropTypes.shape, but for any Immutable.Iterable
  */
 var Immutable = require('immutable');
+var PropTypes = require('prop-types');
 
 var ANONYMOUS = '<<anonymous>>';
 
@@ -155,7 +156,7 @@ function createIterableTypeChecker(typeChecker, immutableClassName, immutableCla
 
     var propValues = propValue.valueSeq().toArray();
     for (var i = 0, len = propValues.length; i < len; i++) {
-      var error = typeChecker(propValues, i, componentName, location, `${propFullName}[${i}]`, ...rest);
+      var error = PropTypes.checkPropTypes(typeChecker, propValues[i], 'prop', componentName);
       if (error instanceof Error) {
         return error;
       }
@@ -267,7 +268,7 @@ function createShapeTypeChecker(shapeTypes, immutableClassName = 'Iterable', imm
       if (!checker) {
         continue;
       }
-      var error = checker(mutablePropValue, key, componentName, location, `${propFullName}.${key}`, ...rest);
+      var error = PropTypes.checkPropTypes(checker, mutablePropValue, 'prop', componentName);
       if (error) {
         return error;
       }

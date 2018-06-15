@@ -1,2 +1,0 @@
-#!/bin/sh
-./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --require ./babel ./src/__tests__

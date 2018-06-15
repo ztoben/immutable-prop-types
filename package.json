@@ -4,8 +4,8 @@
   "description": "PropType validators that work with Immutable.js",
   "main": "dist/ImmutablePropTypes.js",
   "scripts": {
-    "build": "./scripts/build",
-    "test": "./scripts/test",
+    "build": "npm run test && babel src/immutablePropTypes.js -o dist/immutablePropTypes.js",
+    "test": "mocha --require babel-core/register src/tests",
     "test-cov": "./scripts/test-cov",
     "prepublish": "npm run build",
     "lint": "./node_modules/.bin/eslint ./src"
@@ -32,13 +32,14 @@
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
-    "babel-eslint": "^8.2.3",
+    "babel-core": "6.26.3",
+    "babel-preset-env": "1.7.0",
     "eslint": "^4.19.1",
     "eslint-plugin-react": "^7.9.1",
     "expect.js": "^0.3.1",
-    "immutable": "^3.8.2",
-    "istanbul": "^0.4.5",
+    "immutable": "4.0.0-rc.9",
     "mocha": "^5.2.0",
+    "prop-types": "15.6.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
   },
