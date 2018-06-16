@@ -1,7 +1,9 @@
 # immutable-prop-types
 
 [![npm package](https://img.shields.io/npm/v/immutable-prop-types.svg?style=flat)](https://www.npmjs.org/package/immutable-prop-types)
-[![Build Status](https://travis-ci.org/ztoben/immutable-prop-types.svg?branch=master)](https://travis-ci.org/ztoben/immutable-prop-types) [![Greenkeeper badge](https://badges.greenkeeper.io/ztoben/immutable-prop-types.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/ztoben/immutable-prop-types.svg?branch=master)](https://travis-ci.org/ztoben/immutable-prop-types)
+[![Greenkeeper badge](https://badges.greenkeeper.io/ztoben/immutable-prop-types.svg)](https://greenkeeper.io/)
+[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
 
 PropType validators that work with Immutable.js. Forked from [react-immutable-proptypes](https://github.com/HurricaneJames/react-immutable-proptypes).
 
