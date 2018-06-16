@@ -33,7 +33,7 @@ function typeCheckPass(declaration, value) {
 
 describe('ImmutablePropTypes', function () {
   beforeEach(function () {
-    PropTypes = require('../ImmutablePropTypes');
+    PropTypes = require('../src/ImmutablePropTypes');
     React = require('react');
     Immutable = require('immutable');
     ReactPropTypes = require('prop-types');

@@ -5,7 +5,7 @@
   "main": "dist/ImmutablePropTypes.js",
   "scripts": {
     "build": "babel src --out-dir dist",
-    "test": "mocha --require babel-core/register test",
+    "test": "nyc mocha --require babel-core/register test",
     "prepublish": "npm run build"
   },
   "repository": {
@@ -34,17 +34,17 @@
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-core": "6.26.3",
+    "babel-plugin-istanbul": "^4.1.6",
     "babel-preset-env": "1.7.0",
-    "eslint": "^4.19.1",
-    "eslint-plugin-react": "^7.9.1",
-    "expect.js": "^0.3.1",
+    "expect.js": "0.3.1",
     "immutable": "4.0.0-rc.9",
-    "mocha": "^5.2.0",
+    "mocha": "5.2.0",
+    "nyc": "^12.0.2",
     "prop-types": "15.6.1",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react": "16.4.1",
+    "react-dom": "16.4.1"
   },
   "dependencies": {
-    "invariant": "^2.2.4"
+    "invariant": "2.2.4"
   }
 }
