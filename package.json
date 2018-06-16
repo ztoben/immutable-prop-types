@@ -1,6 +1,6 @@
 {
   "name": "immutable-prop-types",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "PropType validators that work with Immutable.js",
   "main": "dist/ImmutablePropTypes.js",
   "scripts": {
