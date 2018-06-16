@@ -4,8 +4,8 @@
  *     ImmutableTypes.listOf is patterned after React.PropTypes.arrayOf, but for Immutable.List
  *     ImmutableTypes.shape  is based on React.PropTypes.shape, but for any Immutable.Iterable
  */
+import checkPropTypes from 'check-prop-types';
 var Immutable = require('immutable');
-var PropTypes = require('prop-types');
 
 var ANONYMOUS = '<<anonymous>>';
 
@@ -32,8 +32,8 @@ if (process.env.NODE_ENV !== 'production') {
     orderedSet: createImmutableTypeChecker('OrderedSet', Immutable.OrderedSet.isOrderedSet),
     stack:      createImmutableTypeChecker('Stack', Immutable.Stack.isStack),
     seq:        createImmutableTypeChecker('Seq', Immutable.Seq.isSeq),
-    record:     createImmutableTypeChecker('Record', function(isRecord) { return isRecord instanceof Immutable.Record; }),
-    iterable:   createImmutableTypeChecker('Iterable', Immutable.Iterable.isIterable)
+    record:     createImmutableTypeChecker('Record', Immutable.Record.isRecord),
+    iterable:   createImmutableTypeChecker('Iterable', Immutable.isCollection)
   };
 } else {
   var productionTypeChecker = function() {
@@ -70,8 +70,8 @@ if (process.env.NODE_ENV !== 'production') {
   };
 }
 
-ImmutablePropTypes.iterable.indexed = createIterableSubclassTypeChecker('Indexed', Immutable.Iterable.isIndexed);
-ImmutablePropTypes.iterable.keyed = createIterableSubclassTypeChecker('Keyed', Immutable.Iterable.isKeyed);
+ImmutablePropTypes.iterable.indexed = createIterableSubclassTypeChecker('Indexed', Immutable.isIndexed);
+ImmutablePropTypes.iterable.keyed = createIterableSubclassTypeChecker('Keyed', Immutable.isKeyed);
 
 function getPropType(propValue) {
   var propType = typeof propValue;
@@ -126,7 +126,7 @@ function createImmutableTypeChecker(immutableClassName, immutableClassTypeValida
 
 function createIterableSubclassTypeChecker(subclassName, validator) {
   return createImmutableTypeChecker(`Iterable.${subclassName}`, (propValue) =>
-    Immutable.Iterable.isIterable(propValue) && validator(propValue)
+    Immutable.isCollection(propValue) && validator(propValue)
   );
 }
 
@@ -150,8 +150,8 @@ function createIterableTypeChecker(typeChecker, immutableClassName, immutableCla
 
     var propValues = propValue.valueSeq().toArray();
     for (var i = 0, len = propValues.length; i < len; i++) {
-      var error = PropTypes.checkPropTypes(typeChecker, propValues[i], 'prop', componentName);
-      if (error instanceof Error) {
+      var error = checkPropTypes(typeChecker, propValues[i], 'prop', componentName);
+      if (error) {
         return error;
       }
     }
@@ -171,8 +171,8 @@ function createKeysTypeChecker(typeChecker) {
 
     var keys = propValue.keySeq().toArray();
     for (var i = 0, len = keys.length; i < len; i++) {
-      var error = PropTypes.checkPropTypes(typeChecker, keys[i], 'prop', componentName);
-      if (error instanceof Error) {
+      var error = checkPropTypes(typeChecker, keys[i], 'prop', componentName);
+      if (error) {
         return error;
       }
     }
@@ -214,25 +214,24 @@ function createStackOfTypeChecker(typeChecker) {
 }
 
 function createIterableOfTypeChecker(typeChecker) {
-  return createIterableTypeChecker(typeChecker, 'Iterable', Immutable.Iterable.isIterable);
+  return createIterableTypeChecker(typeChecker, 'Iterable', Immutable.isCollection);
 }
 
 function createRecordOfTypeChecker(recordKeys) {
-  function validate(props, propName, componentName, location, propFullName, ...rest) {
+  function validate(props, propName, componentName, location, propFullName) {
     var propValue = props[propName];
     if (!(propValue instanceof Immutable.Record)) {
       var propType = getPropType(propValue);
-      var locationName = location;
       return new Error(
-        `Invalid ${locationName} \`${propFullName}\` of type \`${propType}\` ` +
+        `Invalid ${location} \`${propFullName}\` of type \`${propType}\` ` +
         `supplied to \`${componentName}\`, expected an Immutable.js Record.`
       );
     }
     for (var key in recordKeys) {
       var checker = recordKeys[key];
       var mutablePropValue = propValue.toObject();
-      var error = PropTypes.checkPropTypes(checker, mutablePropValue, 'prop', componentName);
-      if (error instanceof Error) {
+      var error = checkPropTypes(checker, mutablePropValue, 'prop', componentName);
+      if (error) {
         return error;
       }
     }
@@ -240,8 +239,7 @@ function createRecordOfTypeChecker(recordKeys) {
   return createChainableTypeChecker(validate);
 }
 
-// there is some irony in the fact that shapeTypes is a standard hash and not an immutable collection
-function createShapeTypeChecker(shapeTypes, immutableClassName = 'Iterable', immutableClassTypeValidator = Immutable.Iterable.isIterable) {
+function createShapeTypeChecker(shapeTypes, immutableClassName = 'Iterable', immutableClassTypeValidator = Immutable.isCollection) {
   function validate(props, propName, componentName, location, propFullName) {
     var propValue = props[propName];
     if (!immutableClassTypeValidator(propValue)) {
@@ -254,7 +252,7 @@ function createShapeTypeChecker(shapeTypes, immutableClassName = 'Iterable', imm
     var mutablePropValue = propValue.toObject();
     for (var key in shapeTypes) {
       var checker = shapeTypes[key];
-      var error = PropTypes.checkPropTypes(checker, mutablePropValue, 'prop', componentName);
+      var error = checkPropTypes(checker, mutablePropValue, 'prop', componentName);
       if (error) {
         return error;
       }

@@ -85,6 +85,7 @@ describe('ImmutablePropTypes', function () {
       typeCheckPass(PropTypes.iterable.keyed, Immutable.OrderedMap());
       typeCheckPass(PropTypes.iterable.keyed, Immutable.Seq.Keyed());
     });
+
     it('should warn for invalid lists', function () {
       typeCheckFail(
         PropTypes.list,
@@ -420,8 +421,7 @@ describe('ImmutablePropTypes', function () {
     });
 
     it('should warn with invalid complex types', function () {
-      function Thing() {
-      }
+      function Thing() {}
 
       var name = Thing.name || '<<anonymous>>';
 
