@@ -12,21 +12,22 @@ PropType validators that work with Immutable.js. Forked from [react-immutable-pr
 Usage is simple, they work with and like any `PropType.*` validator.
 
 ```js
-var ImmutablePropTypes = require('immutable-prop-types');
-var MyReactComponent = React.createClass({
-    // ...
-    propTypes: {
-        myRequiredImmutableList: ImmutablePropTypes.listOf(
-            ImmutablePropTypes.contains({
-                someNumberProp: PropTypes.number.isRequired
-            })
-        ).isRequired
-    }
-    // ...
-});
+import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'immutable-prop-types';
+class MyReactComponent extends React.Component {
+  // ...
+}
+
+MyReactComponent.propTypes = {
+    myRequiredImmutableList: ImmutablePropTypes.listOf(
+        ImmutablePropTypes.contains({
+            someNumberProp: PropTypes.number.isRequired
+        })
+    ).isRequired
+};
 ```
 
-Since version 0.1.7 there are convenience helpers for "primitive" Immutable.js objects.
+#### Convenience helpers for "primitive" Immutable.js objects:
 
 ```js
 propTypes: {
@@ -41,15 +42,15 @@ propTypes: {
 
 ## Installation
 
-Installing via [npmjs](https://www.npmjs.com/package/react-immutable-proptypes)
+Installing via [npmjs](https://www.npmjs.com/package/immutable-prop-types)
 ```bash
-npm install --save react-immutable-proptypes
+npm install --save immutable-prop-types
 ```
 
 
 ## API
 
-React-Immutable-PropTypes has:
+Immutable prop types has:
 * Primitive Types
 ```js
 ImmutablePropTypes.list         // Immutable.List.isList
