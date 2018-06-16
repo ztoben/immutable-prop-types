@@ -4,8 +4,8 @@
   "description": "PropType validators that work with Immutable.js",
   "main": "dist/ImmutablePropTypes.js",
   "scripts": {
-    "build": "babel src/immutablePropTypes.js -o dist/immutablePropTypes.js",
-    "test": "mocha --require babel-core/register src/tests",
+    "build": "babel src --out-dir dist",
+    "test": "mocha --require babel-core/register test",
     "prepublish": "npm run build"
   },
   "repository": {
