@@ -9,16 +9,16 @@ PropType validators that work with Immutable.js. Forked from [react-immutable-pr
 
 ## About
 
-Usage is simple, they work with and like any `React.PropType.*` validator.
+Usage is simple, they work with and like any `PropType.*` validator.
 
 ```js
-var ImmutablePropTypes = require('react-immutable-proptypes');
+var ImmutablePropTypes = require('immutable-prop-types');
 var MyReactComponent = React.createClass({
     // ...
     propTypes: {
         myRequiredImmutableList: ImmutablePropTypes.listOf(
             ImmutablePropTypes.contains({
-                someNumberProp: React.PropTypes.number.isRequired
+                someNumberProp: PropTypes.number.isRequired
             })
         ).isRequired
     }
@@ -30,7 +30,7 @@ Since version 0.1.7 there are convenience helpers for "primitive" Immutable.js o
 
 ```js
 propTypes: {
-    oldListTypeChecker: React.PropTypes.instanceOf(Immutable.List),
+    oldListTypeChecker: PropTypes.instanceOf(Immutable.List),
     anotherWay: ImmutablePropTypes.list,
     requiredList: ImmutablePropTypes.list.isRequired,
     mapsToo: ImmutablePropTypes.map,
@@ -65,32 +65,32 @@ ImmutablePropTypes.contains     // Immutable.Iterable.isIterable - contains(shap
 ImmutablePropTypes.mapContains  // Immutable.Map.isMap - contains(shape)
 ```
 
-* `ImmutablePropTypes.contains` (formerly `shape`) is based on `React.PropTypes.shape` and will try to work with any `Immutable.Iterable`. In my usage it is the most used validator, as I'm often trying to validate that a map has certain properties with certain values.
+* `ImmutablePropTypes.contains` (formerly `shape`) is based on `PropTypes.shape` and will try to work with any `Immutable.Iterable`. In my usage it is the most used validator, as I'm often trying to validate that a map has certain properties with certain values.
 
 ```es6
 // ...
 aMap: ImmutablePropTypes.contains({
     aList: ImmutablePropTypes.contains({
-        0: React.PropTypes.number,
-        1: React.PropTypes.string,
-        2: React.PropTypes.number.isRequired,
+        0: PropTypes.number,
+        1: PropTypes.string,
+        2: PropTypes.number.isRequired,
     }).isRequired,
 })
 // ...
 <SomeComponent aList={Immutable.fromJS({aList: [1, 'two', 3]})} />
 ```
 
-* `ImmutablePropTypes.listOf` is based on `React.PropTypes.array` and is specific to `Immutable.List`.
+* `ImmutablePropTypes.listOf` is based on `PropTypes.array` and is specific to `Immutable.List`.
 
-* `ImmutablePropTypes.mapOf` allows you to control both map values and keys (in Immutable.Map, keys could be _anything_ including another Immutable collections). It accepts two arguments - first one for values, second one for keys (optional). If you are interested in validation of keys only, just pass `React.PropTypes.any` as the first argument.
+* `ImmutablePropTypes.mapOf` allows you to control both map values and keys (in Immutable.Map, keys could be _anything_ including another Immutable collections). It accepts two arguments - first one for values, second one for keys (optional). If you are interested in validation of keys only, just pass `PropTypes.any` as the first argument.
 
 ```es6
 // ...
 aMap: ImmutablePropTypes.mapOf(
-    React.PropTypes.any, // validation for values
+    PropTypes.any, // validation for values
     ImmutablePropTypes.mapContains({ // validation for keys
-        a: React.PropTypes.number.isRequired,
-        b: React.PropTypes.string
+        a: PropTypes.number.isRequired,
+        b: PropTypes.string
     })
 )
 // ...
@@ -114,13 +114,13 @@ const aMap = Immutable.Map([
 ```js
 // ...
 aRecord: ImmutablePropTypes.recordOf({
-    keyA: React.PropTypes.string,
+    keyA: PropTypes.string,
     keyB: ImmutablePropTypes.list.isRequired
 })
 // ...
 ```
 
-* `ImmutablePropTypes.mapContains` is based on `React.PropTypes.shape` and will only work with `Immutable.Map`.
+* `ImmutablePropTypes.mapContains` is based on `PropTypes.shape` and will only work with `Immutable.Map`.
 
 ```es6
 // ...
