@@ -1,9 +1,9 @@
 # immutable-prop-types
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm package](https://img.shields.io/npm/v/immutable-prop-types.svg?style=flat)](https://www.npmjs.org/package/immutable-prop-types)
 [![Build Status](https://travis-ci.org/ztoben/immutable-prop-types.svg?branch=master)](https://travis-ci.org/ztoben/immutable-prop-types)
 [![Greenkeeper badge](https://badges.greenkeeper.io/ztoben/immutable-prop-types.svg)](https://greenkeeper.io/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 PropType validators that work with Immutable.js. Forked from [react-immutable-proptypes](https://github.com/HurricaneJames/react-immutable-proptypes).
 
@@ -19,26 +19,25 @@ class MyReactComponent extends React.Component {
 }
 
 MyReactComponent.propTypes = {
-    myRequiredImmutableList: ImmutablePropTypes.listOf(
-        ImmutablePropTypes.contains({
-            someNumberProp: PropTypes.number.isRequired
-        })
-    ).isRequired
+  myRequiredImmutableList: ImmutablePropTypes.listOf(
+    ImmutablePropTypes.contains({
+      someNumberProp: PropTypes.number.isRequired
+    })
+  ).isRequired
 };
 ```
 
-#### Convenience helpers for "primitive" Immutable.js objects:
+Convenience helpers for "primitive" Immutable.js objects:
 
 ```js
 propTypes: {
-    oldListTypeChecker: PropTypes.instanceOf(Immutable.List),
-    anotherWay: ImmutablePropTypes.list,
-    requiredList: ImmutablePropTypes.list.isRequired,
-    mapsToo: ImmutablePropTypes.map,
-    evenIterable: ImmutablePropTypes.iterable
+  oldListTypeChecker: PropTypes.instanceOf(Immutable.List),
+  anotherWay: ImmutablePropTypes.list,
+  requiredList: ImmutablePropTypes.list.isRequired,
+  mapsToo: ImmutablePropTypes.map,
+  evenIterable: ImmutablePropTypes.iterable
 }
 ```
-
 
 ## Installation
 
@@ -46,7 +45,6 @@ Installing via [npmjs](https://www.npmjs.com/package/immutable-prop-types)
 ```bash
 npm install --save immutable-prop-types
 ```
-
 
 ## API
 
@@ -71,11 +69,11 @@ ImmutablePropTypes.mapContains  // Immutable.Map.isMap - contains(shape)
 ```es6
 // ...
 aMap: ImmutablePropTypes.contains({
-    aList: ImmutablePropTypes.contains({
-        0: PropTypes.number,
-        1: PropTypes.string,
-        2: PropTypes.number.isRequired,
-    }).isRequired,
+  aList: ImmutablePropTypes.contains({
+    0: PropTypes.number,
+    1: PropTypes.string,
+    2: PropTypes.number.isRequired,
+  }).isRequired,
 })
 // ...
 <SomeComponent aList={Immutable.fromJS({aList: [1, 'two', 3]})} />
@@ -88,16 +86,16 @@ aMap: ImmutablePropTypes.contains({
 ```es6
 // ...
 aMap: ImmutablePropTypes.mapOf(
-    PropTypes.any, // validation for values
-    ImmutablePropTypes.mapContains({ // validation for keys
-        a: PropTypes.number.isRequired,
-        b: PropTypes.string
-    })
+  PropTypes.any, // validation for values
+  ImmutablePropTypes.mapContains({ // validation for keys
+    a: PropTypes.number.isRequired,
+    b: PropTypes.string
+  })
 )
 // ...
 const aMap = Immutable.Map([
-    [Immutable.Map({a: 1, b: '2'}), 'foo'],
-    [Immutable.Map({a: 3}), [1, '2', 3]]
+  [Immutable.Map({a: 1, b: '2'}), 'foo'],
+  [Immutable.Map({a: 3}), [1, '2', 3]]
 ]);
 <SomeComponent aMap={aMap} />
 ```
@@ -115,8 +113,8 @@ const aMap = Immutable.Map([
 ```js
 // ...
 aRecord: ImmutablePropTypes.recordOf({
-    keyA: PropTypes.string,
-    keyB: ImmutablePropTypes.list.isRequired
+  keyA: PropTypes.string,
+  keyB: ImmutablePropTypes.list.isRequired
 })
 // ...
 ```
@@ -126,7 +124,7 @@ aRecord: ImmutablePropTypes.recordOf({
 ```es6
 // ...
 aMap: ImmutablePropTypes.mapContains({
-    aList: ImmutablePropTypes.list.isRequired,
+  aList: ImmutablePropTypes.list.isRequired,
 })
 // ...
 <SomeComponent aList={Immutable.fromJS({aList: [1, 2]})} />
