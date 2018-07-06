@@ -1,4 +1,4 @@
-# immutable-prop-types
+# WIP: immutable-prop-types
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![npm package](https://img.shields.io/npm/v/immutable-prop-types.svg?style=flat)](https://www.npmjs.org/package/immutable-prop-types)
@@ -9,7 +9,7 @@ PropType validators that work with Immutable.js. Forked from [react-immutable-pr
 
 ## About
 
-Usage is simple, they work with and like any `PropType.*` validator.
+Usage is simple, they work with and like any `PropType.*` validator. Not yet feature complete, working on a rewrite in my spare time.
 
 ```js
 import PropTypes from 'prop-types';
