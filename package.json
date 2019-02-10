@@ -41,7 +41,7 @@
     "immutable": "4.0.0-rc.12",
     "mocha": "5.2.0",
     "nyc": "^13.2.0",
-    "prop-types": "15.6.2",
+    "prop-types": "15.7.0",
     "react": "16.8.1",
     "react-dom": "16.8.1"
   },
