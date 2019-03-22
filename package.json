@@ -43,7 +43,7 @@
     "nyc": "^13.2.0",
     "prop-types": "15.7.2",
     "react": "16.8.5",
-    "react-dom": "16.8.4"
+    "react-dom": "16.8.5"
   },
   "dependencies": {
     "invariant": "2.2.4"
