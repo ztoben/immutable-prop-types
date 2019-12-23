@@ -34,7 +34,7 @@
   "devDependencies": {
     "babel-cli": "6.26.0",
     "babel-core": "6.26.3",
-    "babel-plugin-istanbul": "^5.1.1",
+    "babel-plugin-istanbul": "^6.0.0",
     "babel-preset-env": "1.7.0",
     "check-prop-types": "^1.1.2",
     "expect.js": "0.3.1",
